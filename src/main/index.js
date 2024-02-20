@@ -115,3 +115,74 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
+
+//Index para enviar un mensaje a otra ventana
+// const { app, BrowserWindow, ipcMain, Menu } = require('electron');
+// const path = require('path');
+
+// let mainWindow; // Variable para almacenar la ventana principal
+
+// function crearVentanaPrincipal() {
+//   mainWindow = new BrowserWindow({
+//     width: 800,
+//     height: 600,
+//     webPreferences: {
+//       nodeIntegration: true
+//     }
+//   });
+
+//   // Cargar el archivo index.html en la ventana principal
+//   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+//   // Cuando se cierre la ventana principal, salir de la aplicación
+//   mainWindow.on('closed', () => {
+//     app.quit();
+//   });
+
+//   // Añadir una entrada al menú
+//   const menuPrincipal = Menu.buildFromTemplate([
+//     {
+//       label: 'Menú',
+//       submenu: [
+//         {
+//           label: 'Enviar Mensaje',
+//           click: () => {
+//             // Enviar un mensaje a la ventana principal
+//             mainWindow.webContents.send('mensaje-enviado', 'Este es un mensaje enviado desde la ventana principal');
+//           }
+//         }
+//       ]
+//     }
+//   ]);
+//   Menu.setApplicationMenu(menuPrincipal);
+// }
+
+// app.on('ready', crearVentanaPrincipal);
+
+// // Cuando se cierran todas las ventanas, salir de la aplicación (en macOS es común que la aplicación permanezca activa incluso después de cerrar todas las ventanas)
+// app.on('window-all-closed', () => {
+//   if (process.platform !== 'darwin') {
+//     app.quit();
+//   }
+// });
+
+// // Función para abrir otra ventana
+// function abrirOtraVentana() {
+//   const otraVentana = new BrowserWindow({
+//     width: 400,
+//     height: 300,
+//     webPreferences: {
+//       nodeIntegration: true
+//     }
+//   });
+
+//   // Cargar el archivo otraVentana.html en la otra ventana
+//   otraVentana.loadFile(path.join(__dirname, 'otraVentana.html'));
+// }
+
+// // Agregar un listener para recibir el mensaje
+// ipcMain.on('mensaje-enviado', (event, data) => {
+//   console.log('Mensaje recibido desde la ventana principal:', data);
+//   // Abrir otra ventana después de recibir el mensaje
+//   abrirOtraVentana();
+// });
