@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'nonce-abc123'">
+    <title>SegundaVentana</title>
+</head>
+<body>
+    <h1>Esta es la segunda ventana</h1>
+    <input type="text" id="inputText">
+    <button id="sendButton">SendEvent</button>
+    <script nonce="abc123">
+        function send() {
+            mensaje = document.getElementById("inputText").value;
+            console.log(mensaje);
+        }
+        document.getElementById("sendButton").onclick = send;
+    </script>
+</body>
+</html>
